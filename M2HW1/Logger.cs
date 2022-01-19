@@ -35,7 +35,7 @@ namespace M2HW1
 
         public void WriteLogsIntoFile()
         {
-            File.WriteAllText(@"C:\Users\sasha\source\repos\M2HW1\M2HW1\logs.txt", Logs.ToString());
+            File.WriteAllText("logs.txt", Logs.ToString());
         }
     }
 }
