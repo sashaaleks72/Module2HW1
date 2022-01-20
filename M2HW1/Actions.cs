@@ -5,17 +5,17 @@ namespace M2HW1
 {
     public static class Actions
     {
-        public static Result PrintInfoLog()
+        public static Result GetInfoLog()
         {
-            return new Result(true, $"Start method: PrintInfoLog\n");
+            return new Result(true, $"Start method: {nameof(GetInfoLog)}\n");
         }
 
-        public static Result PrintWarningLog()
+        public static Result GetWarningLog()
         {
-            return new Result(true, $"Skipped logic in method: PrintWarningLog\n");
+            return new Result(true, $"Skipped logic in method: {nameof(GetWarningLog)}\n");
         }
 
-        public static Result PrintErrorLog()
+        public static Result GetErrorLog()
         {
             return new Result(false, $"I broke a logic");
         }

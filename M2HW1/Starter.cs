@@ -5,31 +5,26 @@ namespace M2HW1
 {
     public static class Starter
     {
-        // private static Logger _logger;
         static Starter()
         {
-            // _logger = new Logger();
+            Logger = Logger.Instance;
         }
 
-        // public static Logger Logger => _logger
         public static Logger Logger { get; set; }
 
         public static void Run()
         {
-            Logger = Logger.Instance;
-
-            int i = 0;
             int randomValue = 0;
 
-            while (i != 100)
+            for (int i = 0; i < 100; i++)
             {
                 randomValue = new Random().Next(1, 4);
 
                 Result result = randomValue switch
                 {
-                    1 => Actions.PrintInfoLog(),
-                    2 => Actions.PrintWarningLog(),
-                    3 => Actions.PrintErrorLog(),
+                    1 => Actions.GetInfoLog(),
+                    2 => Actions.GetWarningLog(),
+                    3 => Actions.GetErrorLog(),
                     _ => new Result(false, "Something went wrong")
                 };
 
@@ -45,8 +40,6 @@ namespace M2HW1
                 {
                     Logger.Logs.Append($"{DateTime.Now}: Warning: {result.Msg}");
                 }
-
-                i++;
             }
 
             Logger.PrintLogs();
