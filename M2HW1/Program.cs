@@ -6,7 +6,7 @@ namespace M2HW1
     {
         private static void Main()
         {
-            Starter.Run();
+            new Starter().Run();
         }
     }
 }

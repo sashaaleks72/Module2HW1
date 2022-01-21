@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Text;
 
 namespace M2HW1
 {
-    public static class Starter
+    public class Starter
     {
-        static Starter()
+        private Logger _logger;
+        private Actions _actions;
+
+        public Starter()
         {
-            Logger = Logger.Instance;
+            _logger = Logger.Instance;
+            _actions = new Actions();
         }
 
-        public static Logger Logger { get; set; }
-
-        public static void Run()
+        public void Run()
         {
             int randomValue = 0;
 
@@ -22,28 +23,28 @@ namespace M2HW1
 
                 Result result = randomValue switch
                 {
-                    1 => Actions.GetInfoLog(),
-                    2 => Actions.GetWarningLog(),
-                    3 => Actions.GetErrorLog(),
+                    1 => _actions.GetInfoLog(),
+                    2 => _actions.GetWarningLog(),
+                    3 => _actions.GetErrorLog(),
                     _ => new Result(false, "Something went wrong")
                 };
 
                 if (!result.Status)
                 {
-                    Logger.Logs.Append($"{DateTime.Now}: Error: Action failed by a reason: {result.Msg}\n");
+                    _logger.WriteLog($"{DateTime.Now}: Error: Action failed by a reason: {result.Msg}\n");
                 }
                 else if (result.Msg.Contains("Info"))
                 {
-                    Logger.Logs.Append($"{DateTime.Now}: Info: {result.Msg}");
+                    _logger.WriteLog($"{DateTime.Now}: Info: {result.Msg}");
                 }
                 else
                 {
-                    Logger.Logs.Append($"{DateTime.Now}: Warning: {result.Msg}");
+                    _logger.WriteLog($"{DateTime.Now}: Warning: {result.Msg}");
                 }
             }
 
-            Logger.PrintLogs();
-            Logger.WriteLogsIntoFile();
+            _logger.PrintLogs();
+            _logger.WriteLogsIntoFile();
         }
     }
 }

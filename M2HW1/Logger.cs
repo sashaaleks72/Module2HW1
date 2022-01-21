@@ -31,12 +31,17 @@ namespace M2HW1
 
         public void PrintLogs()
         {
-            Console.WriteLine(Logs);
+            Console.WriteLine(Logs.ToString());
         }
 
         public void WriteLogsIntoFile()
         {
             File.WriteAllText("logs.txt", Logs.ToString());
+        }
+
+        public void WriteLog(string log)
+        {
+            Logs.Append(log);
         }
     }
 }

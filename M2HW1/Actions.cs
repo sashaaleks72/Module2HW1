@@ -3,19 +3,19 @@ using System.Text;
 
 namespace M2HW1
 {
-    public static class Actions
+    public class Actions
     {
-        public static Result GetInfoLog()
+        public Result GetInfoLog()
         {
             return new Result(true, $"Start method: {nameof(GetInfoLog)}\n");
         }
 
-        public static Result GetWarningLog()
+        public Result GetWarningLog()
         {
             return new Result(true, $"Skipped logic in method: {nameof(GetWarningLog)}\n");
         }
 
-        public static Result GetErrorLog()
+        public Result GetErrorLog()
         {
             return new Result(false, $"I broke a logic");
         }
